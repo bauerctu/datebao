@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <SurfaceView
+        android:id="@+id/sfv_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <SurfaceView
+        android:id="@+id/sfv_face"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="@drawable/bg_circle"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/top">
+
+            <Button
+                android:id="@+id/开始"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <com.ogaclejapan.arclayout.ArcLayout
+            android:id="@id/arc_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:arc_axisRadius="@dimen/layout_child_offset_small"
+            app:arc_origin="center"
+            app:arc_radius="@dimen/layout_radius_small">
+
+            <ImageView
+                android:id="@+id/angle_0"
+                android:layout_width="@dimen/balloon_width_small"
+                android:layout_height="@dimen/balloon_height_small"
+                android:scaleType="centerInside"
+                android:layout_centerVertical="true"
+                android:src="@drawable/balloon_green"
+                />
+
+            <ImageView
+                android:id="@+id/angle_45"
+                android:layout_width="@dimen/balloon_width_small"
+                android:layout_height="@dimen/balloon_height_small"
+                android:scaleType="centerInside"
+                android:layout_centerVertical="true"
+                android:background="@drawable/balloon_purple" />
+
+            <ImageView
+                android:id="@+id/angle_90"
+                android:layout_width="@dimen/balloon_width_small"
+                android:layout_height="@dimen/balloon_height_small"
+                android:scaleType="centerInside"
+                android:layout_centerVertical="true"
+                android:background="@drawable/balloon_red" />
+
+            <ImageView
+                android:id="@+id/angle_135"
+                android:layout_width="@dimen/balloon_width_small"
+                android:layout_height="@dimen/balloon_height_small"
+                android:scaleType="centerInside"
+                android:layout_centerVertical="true"
+                android:background="@drawable/balloon_yellow" />
+
+            <ImageView
+                android:id="@+id/angle_180"
+                android:layout_width="@dimen/balloon_width_small"
+                android:layout_height="@dimen/balloon_height_small"
+                android:scaleType="centerInside"
+                android:layout_centerVertical="true"
+                android:background="@drawable/balloon_green" />
+
+            <ImageView
+                android:id="@+id/angle_225"
+                android:layout_width="@dimen/balloon_width_small"
+                android:layout_height="@dimen/balloon_height_small"
+                android:scaleType="centerInside"
+                android:layout_centerVertical="true"
+                android:background="@drawable/balloon_purple" />
+
+            <ImageView
+                android:id="@+id/angle_270"
+                android:layout_width="@dimen/balloon_width_small"
+                android:layout_height="@dimen/balloon_height_small"
+                android:scaleType="centerInside"
+                android:layout_centerVertical="true"
+                android:background="@drawable/balloon_red" />
+
+            <ImageView
+                android:id="@+id/angle_315"
+                android:layout_width="@dimen/balloon_width_small"
+                android:layout_height="@dimen/balloon_height_small"
+                android:scaleType="centerInside"
+                android:layout_centerVertical="true"
+                android:background="@drawable/balloon_yellow" />
+
+        </com.ogaclejapan.arclayout.ArcLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/my_record"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/global_rank"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <ImageView
+                android:id="@+id/demo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
