@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -7,12 +7,12 @@
     <SurfaceView
         android:id="@+id/sfv_preview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <SurfaceView
         android:id="@+id/sfv_face"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,66 +44,65 @@
                 android:id="@+id/angle_0"
                 android:layout_width="@dimen/balloon_width_small"
                 android:layout_height="@dimen/balloon_height_small"
-                android:scaleType="centerInside"
                 android:layout_centerVertical="true"
-                android:src="@drawable/balloon_green"
-                />
+                android:scaleType="centerInside"
+                android:src="@drawable/balloon_green" />
 
             <ImageView
                 android:id="@+id/angle_45"
                 android:layout_width="@dimen/balloon_width_small"
                 android:layout_height="@dimen/balloon_height_small"
-                android:scaleType="centerInside"
                 android:layout_centerVertical="true"
-                android:background="@drawable/balloon_purple" />
+                android:background="@drawable/balloon_purple"
+                android:scaleType="centerInside" />
 
             <ImageView
                 android:id="@+id/angle_90"
                 android:layout_width="@dimen/balloon_width_small"
                 android:layout_height="@dimen/balloon_height_small"
-                android:scaleType="centerInside"
                 android:layout_centerVertical="true"
-                android:background="@drawable/balloon_red" />
+                android:background="@drawable/balloon_red"
+                android:scaleType="centerInside" />
 
             <ImageView
                 android:id="@+id/angle_135"
                 android:layout_width="@dimen/balloon_width_small"
                 android:layout_height="@dimen/balloon_height_small"
-                android:scaleType="centerInside"
                 android:layout_centerVertical="true"
-                android:background="@drawable/balloon_yellow" />
+                android:background="@drawable/balloon_yellow"
+                android:scaleType="centerInside" />
 
             <ImageView
                 android:id="@+id/angle_180"
                 android:layout_width="@dimen/balloon_width_small"
                 android:layout_height="@dimen/balloon_height_small"
-                android:scaleType="centerInside"
                 android:layout_centerVertical="true"
-                android:background="@drawable/balloon_green" />
+                android:background="@drawable/balloon_green"
+                android:scaleType="centerInside" />
 
             <ImageView
                 android:id="@+id/angle_225"
                 android:layout_width="@dimen/balloon_width_small"
                 android:layout_height="@dimen/balloon_height_small"
-                android:scaleType="centerInside"
                 android:layout_centerVertical="true"
-                android:background="@drawable/balloon_purple" />
+                android:background="@drawable/balloon_purple"
+                android:scaleType="centerInside" />
 
             <ImageView
                 android:id="@+id/angle_270"
                 android:layout_width="@dimen/balloon_width_small"
                 android:layout_height="@dimen/balloon_height_small"
-                android:scaleType="centerInside"
                 android:layout_centerVertical="true"
-                android:background="@drawable/balloon_red" />
+                android:background="@drawable/balloon_red"
+                android:scaleType="centerInside" />
 
             <ImageView
                 android:id="@+id/angle_315"
                 android:layout_width="@dimen/balloon_width_small"
                 android:layout_height="@dimen/balloon_height_small"
-                android:scaleType="centerInside"
                 android:layout_centerVertical="true"
-                android:background="@drawable/balloon_yellow" />
+                android:background="@drawable/balloon_yellow"
+                android:scaleType="centerInside" />
 
         </com.ogaclejapan.arclayout.ArcLayout>
 
@@ -130,4 +129,4 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </LinearLayout>
-</FrameLayout>
+</RelativeLayout>

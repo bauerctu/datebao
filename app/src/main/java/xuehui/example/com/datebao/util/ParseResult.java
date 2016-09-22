@@ -17,12 +17,13 @@ public class ParseResult {
 
     /**
      * 离线人脸框结果解析方法
+     *
      * @param json
      * @return
      */
-    static public FaceRect[] parseResult(String json){
+    static public FaceRect[] parseResult(String json) {
         FaceRect[] rect = null;
-        if(TextUtils.isEmpty(json)) {
+        if (TextUtils.isEmpty(json)) {
             return null;
         }
         try {
@@ -32,7 +33,7 @@ public class ParseResult {
             JSONArray items = joResult.getJSONArray("face");
             // 获取人脸数目
             rect = new FaceRect[items.length()];
-            for(int i=0; i<items.length(); i++) {
+            for (int i = 0; i < items.length(); i++) {
 
                 JSONObject position = items.getJSONObject(i).getJSONObject("position");
                 // 提取关键点数据

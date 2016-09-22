@@ -18,11 +18,11 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.iflytek.cloud.FaceDetector;
+import com.iflytek.cloud.Setting;
 import com.iflytek.cloud.util.Accelerometer;
 
 import java.io.IOException;
@@ -34,9 +34,9 @@ import xuehui.example.com.datebao.util.ParseResult;
 /**
  * Created by xuehui on 16-9-22.
  */
-public class BalloonActivity extends Activity{
+public class BalloonActivity extends Activity {
 
-    private final static String TAG = "Balloon";
+    private final static String TAG = "CXH";
     private SurfaceView mPreviewSurface;
     private SurfaceView mFaceSurface;
     private Camera mCamera;
@@ -56,7 +56,7 @@ public class BalloonActivity extends Activity{
     private boolean mStopTrack;
     private Toast mToast;
     private long mLastClickTime;
-    private int isAlign = 0;
+    private int isAlign = 1;
 
     private SurfaceHolder.Callback mPreviewCallback = new SurfaceHolder.Callback() {
 
@@ -73,22 +73,25 @@ public class BalloonActivity extends Activity{
         @Override
         public void surfaceChanged(SurfaceHolder holder, int format, int width,
                                    int height) {
-            mScaleMatrix.setScale(width/(float)PREVIEW_HEIGHT, height/(float)PREVIEW_WIDTH);
+            mScaleMatrix.setScale(width / (float) PREVIEW_HEIGHT, height / (float) PREVIEW_WIDTH);
         }
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_balloon);
+        try {
+            setContentView(R.layout.activity_balloon);
+            Setting.setShowLog(true);
+            initUI();
 
-        initUI();
-
-        nv21 = new byte[PREVIEW_WIDTH * PREVIEW_HEIGHT * 2];
-        buffer = new byte[PREVIEW_WIDTH * PREVIEW_HEIGHT * 2];
-        mAcc = new Accelerometer(BalloonActivity.this);
-        mFaceDetector = FaceDetector.createDetector(BalloonActivity.this, null);
-
+            nv21 = new byte[PREVIEW_WIDTH * PREVIEW_HEIGHT * 2];
+            buffer = new byte[PREVIEW_WIDTH * PREVIEW_HEIGHT * 2];
+            mAcc = new Accelerometer(BalloonActivity.this);
+            mFaceDetector = FaceDetector.createDetector(BalloonActivity.this, null);
+        } catch (Exception e) {
+            Log.e(TAG, "BalloonActivity exception:", e);
+        }
 
     }
 
@@ -97,7 +100,7 @@ public class BalloonActivity extends Activity{
         getWindowManager().getDefaultDisplay().getMetrics(metrics);
 
         int width = metrics.widthPixels;
-        int height = (int) (width * PREVIEW_WIDTH / (float)PREVIEW_HEIGHT);
+        int height = (int) (width * PREVIEW_WIDTH / (float) PREVIEW_HEIGHT);
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(width, height);
         params.addRule(RelativeLayout.ALIGN_PARENT_TOP);
 
@@ -108,13 +111,17 @@ public class BalloonActivity extends Activity{
     @SuppressLint("ShowToast")
     @SuppressWarnings("deprecation")
     private void initUI() {
-        mPreviewSurface = (SurfaceView) findViewById(R.id.sfv_preview);
-        mFaceSurface = (SurfaceView) findViewById(R.id.sfv_face);
+        try {
+            mPreviewSurface = (SurfaceView) findViewById(R.id.sfv_preview);
+            mFaceSurface = (SurfaceView) findViewById(R.id.sfv_face);
 
-        mPreviewSurface.getHolder().addCallback(mPreviewCallback);
-        mPreviewSurface.getHolder().setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-        mFaceSurface.setZOrderOnTop(true);
-        mFaceSurface.getHolder().setFormat(PixelFormat.TRANSLUCENT);
+            mPreviewSurface.getHolder().addCallback(mPreviewCallback);
+            mPreviewSurface.getHolder().setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+            mFaceSurface.setZOrderOnTop(true);
+            mFaceSurface.getHolder().setFormat(PixelFormat.TRANSLUCENT);
+        } catch (Throwable t) {
+            Log.e(TAG, "init surface view error:", t);
+        }
 
         // 点击SurfaceView，切换摄相头
         mFaceSurface.setOnClickListener(new View.OnClickListener() {
@@ -178,7 +185,7 @@ public class BalloonActivity extends Activity{
 //        });
 
         setSurfaceSize();
-//        mToast = Toast.makeText(VideoDemo.this, "", Toast.LENGTH_SHORT);
+        mToast = Toast.makeText(BalloonActivity.this, "", Toast.LENGTH_SHORT);
     }
 
     private void openCamera() {
@@ -280,10 +287,10 @@ public class BalloonActivity extends Activity{
                     // 转换公式：a' = (360 - a)%360，a为人眼视角下的朝向（单位：角度）
                     if (frontCamera) {
                         // SDK中使用0,1,2,3,4分别表示0,90,180,270和360度
-                        direction = (4 - direction)%4;
+                        direction = (4 - direction) % 4;
                     }
 
-                    if(mFaceDetector == null) {
+                    if (mFaceDetector == null) {
                         /**
                          * 离线视频流检测功能需要单独下载支持离线人脸的SDK
                          * 请开发者前往语音云官网下载对应SDK
@@ -293,7 +300,7 @@ public class BalloonActivity extends Activity{
                     }
 
                     String result = mFaceDetector.trackNV21(buffer, PREVIEW_WIDTH, PREVIEW_HEIGHT, isAlign, direction);
-                    Log.d(TAG, "result:"+result);
+                    Log.d(TAG, "result:" + result);
 
                     FaceRect[] faces = ParseResult.parseResult(result);
 
@@ -305,13 +312,13 @@ public class BalloonActivity extends Activity{
                     canvas.drawColor(0, PorterDuff.Mode.CLEAR);
                     canvas.setMatrix(mScaleMatrix);
 
-                    if( faces.length <=0 ) {
+                    if (faces.length <= 0) {
                         mFaceSurface.getHolder().unlockCanvasAndPost(canvas);
                         continue;
                     }
 
                     if (null != faces && frontCamera == (Camera.CameraInfo.CAMERA_FACING_FRONT == mCameraId)) {
-                        for (FaceRect face: faces) {
+                        for (FaceRect face : faces) {
                             face.bound = FaceUtil.RotateDeg90(face.bound, PREVIEW_WIDTH, PREVIEW_HEIGHT);
                             if (face.point != null) {
                                 for (int i = 0; i < face.point.length; i++) {
