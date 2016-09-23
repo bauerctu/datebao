@@ -3,28 +3,25 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="layout_radius_large">192dp</dimen>
-    <dimen name="layout_radius_medium">168dp</dimen>
     <dimen name="layout_radius_small">135dp</dimen>
-    <dimen name="layout_radius_tumblr">135dp</dimen>
-    <dimen name="layout_radius_path">140dp</dimen>
-
-    <dimen name="layout_child_offset_large">144dp</dimen>
-    <dimen name="layout_child_offset_medium">120dp</dimen>
     <dimen name="layout_child_offset_small">150dp</dimen>
-    <dimen name="layout_child_offset_tumblr">100dp</dimen>
-    <dimen name="layout_child_offset_path">114dp</dimen>
-
-    <dimen name="item_circle_size_large">72dp</dimen>
-    <dimen name="item_circle_size_medium">48dp</dimen>
-    <dimen name="item_circle_size_small">36dp</dimen>
-    <dimen name="item_circle_size_tumblr">70dp</dimen>
-    <dimen name="item_circle_size_path">36dp</dimen>
 
     <dimen name="balloon_height_small">81dp</dimen>
     <dimen name="balloon_width_small">57dp</dimen>
     <dimen name="balloon_height_big">22dp</dimen>
     <dimen name="balloon_width_big">11dp</dimen>
+
+    <dimen name="header_height">110dp</dimen>
+    <dimen name="header_btn_start_width">128dp</dimen>
+    <dimen name="header_btn_start_height">47dp</dimen>
+    <dimen name="header_btn_margin_top">105dp</dimen>
+    <dimen name="header_btn_margin_bottom">10dp</dimen>
+    <dimen name="header_btn_margin_right">200dp</dimen>
+    <dimen name="header_btn_margin_left">200dp</dimen>
+
+
+
+
 
     <dimen name="item_font_size_large">32sp</dimen>
     <dimen name="item_font_size_medium">24sp</dimen>

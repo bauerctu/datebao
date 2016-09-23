@@ -82,13 +82,13 @@ public class BalloonActivity extends Activity {
         super.onCreate(savedInstanceState);
         try {
             setContentView(R.layout.activity_balloon);
-            Setting.setShowLog(true);
-            initUI();
-
-            nv21 = new byte[PREVIEW_WIDTH * PREVIEW_HEIGHT * 2];
-            buffer = new byte[PREVIEW_WIDTH * PREVIEW_HEIGHT * 2];
-            mAcc = new Accelerometer(BalloonActivity.this);
-            mFaceDetector = FaceDetector.createDetector(BalloonActivity.this, null);
+//            Setting.setShowLog(true);
+//            initUI();
+//
+//            nv21 = new byte[PREVIEW_WIDTH * PREVIEW_HEIGHT * 2];
+//            buffer = new byte[PREVIEW_WIDTH * PREVIEW_HEIGHT * 2];
+//            mAcc = new Accelerometer(BalloonActivity.this);
+//            mFaceDetector = FaceDetector.createDetector(BalloonActivity.this, null);
         } catch (Exception e) {
             Log.e(TAG, "BalloonActivity exception:", e);
         }
@@ -359,5 +359,7 @@ public class BalloonActivity extends Activity {
         mToast.setText(str);
         mToast.show();
     }
+
+
 
 }
