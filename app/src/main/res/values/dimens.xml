@@ -14,13 +14,19 @@
     <dimen name="header_height">110dp</dimen>
     <dimen name="header_btn_start_width">128dp</dimen>
     <dimen name="header_btn_start_height">47dp</dimen>
+
     <dimen name="header_btn_margin_top">105dp</dimen>
     <dimen name="header_btn_margin_bottom">10dp</dimen>
-    <dimen name="header_btn_margin_right">200dp</dimen>
-    <dimen name="header_btn_margin_left">200dp</dimen>
 
+    <dimen name="header_btn_share_margin_right">200dp</dimen>
+    <dimen name="header_btn_share_margin_left">100dp</dimen>
 
+    <dimen name="header_btn_again_margin_right">100dp</dimen>
+    <dimen name="header_btn_again_margin_left">200dp</dimen>
 
+    <dimen name="bottom_btn_width">105dp</dimen>
+    <dimen name="bottom_btn_height">85dp</dimen>
+    <dimen name="bottom_btn_bottom_margin">37dp</dimen>
 
 
     <dimen name="item_font_size_large">32sp</dimen>

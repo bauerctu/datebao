@@ -59,7 +59,6 @@ public class BalloonActivity extends Activity {
     private int isAlign = 1;
 
     private SurfaceHolder.Callback mPreviewCallback = new SurfaceHolder.Callback() {
-
         @Override
         public void surfaceDestroyed(SurfaceHolder holder) {
             closeCamera();
@@ -71,8 +70,7 @@ public class BalloonActivity extends Activity {
         }
 
         @Override
-        public void surfaceChanged(SurfaceHolder holder, int format, int width,
-                                   int height) {
+        public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
             mScaleMatrix.setScale(width / (float) PREVIEW_HEIGHT, height / (float) PREVIEW_WIDTH);
         }
     };
@@ -82,31 +80,18 @@ public class BalloonActivity extends Activity {
         super.onCreate(savedInstanceState);
         try {
             setContentView(R.layout.activity_balloon);
-//            Setting.setShowLog(true);
-//            initUI();
-//
-//            nv21 = new byte[PREVIEW_WIDTH * PREVIEW_HEIGHT * 2];
-//            buffer = new byte[PREVIEW_WIDTH * PREVIEW_HEIGHT * 2];
-//            mAcc = new Accelerometer(BalloonActivity.this);
-//            mFaceDetector = FaceDetector.createDetector(BalloonActivity.this, null);
+            initUI();
+
+            nv21 = new byte[PREVIEW_WIDTH * PREVIEW_HEIGHT * 2];
+            buffer = new byte[PREVIEW_WIDTH * PREVIEW_HEIGHT * 2];
+            mAcc = new Accelerometer(BalloonActivity.this);
+            mFaceDetector = FaceDetector.createDetector(BalloonActivity.this, null);
         } catch (Exception e) {
             Log.e(TAG, "BalloonActivity exception:", e);
         }
 
     }
 
-    private void setSurfaceSize() {
-        DisplayMetrics metrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(metrics);
-
-        int width = metrics.widthPixels;
-        int height = (int) (width * PREVIEW_WIDTH / (float) PREVIEW_HEIGHT);
-        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(width, height);
-        params.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-
-        mPreviewSurface.setLayoutParams(params);
-        mFaceSurface.setLayoutParams(params);
-    }
 
     @SuppressLint("ShowToast")
     @SuppressWarnings("deprecation")
@@ -166,27 +151,23 @@ public class BalloonActivity extends Activity {
             }
         });
 
-//        RadioGroup alignGruop = (RadioGroup) findViewById(R.id.align_mode);
-//        alignGruop.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-//
-//            @Override
-//            public void onCheckedChanged(RadioGroup arg0, int arg1) {
-//                switch (arg1) {
-//                    case R.id.detect:
-//                        isAlign = 0;
-//                        break;
-//                    case R.id.align:
-//                        isAlign = 1;
-//                        break;
-//                    default:
-//                        break;
-//                }
-//            }
-//        });
-
         setSurfaceSize();
         mToast = Toast.makeText(BalloonActivity.this, "", Toast.LENGTH_SHORT);
     }
+
+    private void setSurfaceSize() {
+        DisplayMetrics metrics = new DisplayMetrics();
+        getWindowManager().getDefaultDisplay().getMetrics(metrics);
+
+        int width = metrics.widthPixels;
+        int height = (int) (width * PREVIEW_WIDTH / (float) PREVIEW_HEIGHT);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(width, height);
+        params.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+
+        mPreviewSurface.setLayoutParams(params);
+        mFaceSurface.setLayoutParams(params);
+    }
+
 
     private void openCamera() {
         if (null != mCamera) {
